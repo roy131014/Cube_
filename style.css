@@ -1,11 +1,3 @@
-$size: 50vmin;
-
-@mixin face($color: white, $tx: 0px, $ty: 0px, $tz: 0px, $rx: 0deg, $ry: 0deg) {
-  background-color: $color;
-  transform: translateX($tx) translateY($ty) translateZ($tz) rotateX($rx)
-    rotateY($ry);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -23,39 +15,51 @@ body {
   cursor: move;
   transform-style: preserve-3d;
   position: absolute;
-  width: $size;
-  height: $size;
+  width: 50vmin;
+  height: 50vmin;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
+}
 
-  .face {
-    box-sizing: border-box;
-    border: 5px solid black;
-    width: $size;
-    height: $size;
-    position: absolute;
-    top: 0;
-    left: 0;
-    &.front {
-      @include face($tz: $size / 2);
-    }
-    &.back {
-      @include face($tz: -$size / 2);
-    }
-    &.top {
-      @include face($ty: -$size / 2, $rx: 90deg);
-    }
-    &.bottom {
-      @include face($ty: $size / 2, $rx: 90deg);
-    }
-    &.left {
-      @include face($tx: -$size / 2, $ry: 90deg);
-    }
-    &.right {
-      @include face($tx: $size / 2, $ry: 90deg);
-    }
-  }
+.cube .face {
+  box-sizing: border-box;
+  border: 5px solid black;
+  width: 50vmin;
+  height: 50vmin;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cube .face.front {
+  background-color: white;
+  transform: translateX(0px) translateY(0px) translateZ(25vmin) rotateX(0deg) rotateY(0deg);
+}
+
+.cube .face.back {
+  background-color: white;
+  transform: translateX(0px) translateY(0px) translateZ(-25vmin) rotateX(0deg) rotateY(0deg);
+}
+
+.cube .face.top {
+  background-color: white;
+  transform: translateX(0px) translateY(-25vmin) translateZ(0px) rotateX(90deg) rotateY(0deg);
+}
+
+.cube .face.bottom {
+  background-color: white;
+  transform: translateX(0px) translateY(25vmin) translateZ(0px) rotateX(90deg) rotateY(0deg);
+}
+
+.cube .face.left {
+  background-color: white;
+  transform: translateX(-25vmin) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(90deg);
+}
+
+.cube .face.right {
+  background-color: white;
+  transform: translateX(25vmin) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(90deg);
 }
